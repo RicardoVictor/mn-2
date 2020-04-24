@@ -77,9 +77,9 @@ def integral(x_inicial, x_final, equacao, filosofia='fechada', grau=1, toleranci
     delta_x = x_final - x_inicial
     I_anterior = 0
     I = delta_x/2 * (calc(equacao, x_inicial) + calc(equacao, x_final))
-    contador = 0
     erro = abs((I - I_anterior)/I)
     n = 1
+    contador = 1
 
     while erro > tolerancia:
         n = n*2
