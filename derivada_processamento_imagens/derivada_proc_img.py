@@ -1,7 +1,7 @@
 import cv2
 
 # Lê a img em escala de cinza
-img = cv2.imread('cubes.png', 0)
+img = cv2.imread('original.png', 0)
 
 # Converte img para escala de cinza
 #gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

@@ -1,4 +1,4 @@
-from math import *
+from auxiliar import calc
 
 
 def integral_n(a, b, n, equacao, filosofia, grau=1):
@@ -71,7 +71,7 @@ def integral_n(a, b, n, equacao, filosofia, grau=1):
     return I
 
 
-def integral(x_inicial, x_final, equacao, filosofia='fechada', grau=1, tolerancia=0.000001):
+def integral(x_inicial, x_final, equacao, tolerancia=0.000001, grau=1, filosofia='fechada'):
     ''' Calcula a integral pelo metodo de Newton-Cotes com base em uma tolerancia '''
 
     delta_x = x_final - x_inicial
@@ -91,12 +91,6 @@ def integral(x_inicial, x_final, equacao, filosofia='fechada', grau=1, toleranci
     return I, contador
 
 
-def calc(equacao, x):
-    ''' Calcula o valor de uma equacao matematica em determinado ponto x '''
-
-    return eval(equacao)
-
-
 if __name__ == '__main__':
 
     equacao = '(sin(2*x)+4*x**2+3*x)**2'
@@ -106,29 +100,29 @@ if __name__ == '__main__':
 
     filosofia = 'fechada'
     grau = 1
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 2
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 3
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 4
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
 
     filosofia = 'aberta'
     grau = 1
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 2
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 3
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
     grau = 4
-    I, cont = integral(x_inicial, x_final, equacao, filosofia, grau=grau, tolerancia=tolerancia)
+    I, cont = integral(x_inicial, x_final, equacao, tolerancia, grau, filosofia)
     print(f'filosofia:{filosofia}, grau:{grau}, resultado:{I}, quantidade de iteracoes:{cont}')
 

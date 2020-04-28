@@ -1,7 +1,8 @@
-from math import *
+from math import sqrt
+from auxiliar import calc
 
 
-def gauss_legendre_2(x_min, x_max, n_particoes, equacao):
+def integral_2(x_min, x_max, n_particoes, equacao):
 	a = x_min
 	h = (x_max - x_min) / n_particoes
 	b = a + h
@@ -22,7 +23,7 @@ def gauss_legendre_2(x_min, x_max, n_particoes, equacao):
 	return soma_part
 
 
-def gauss_legendre_3(x_min, x_max, n_particoes, equacao):
+def integral_3(x_min, x_max, n_particoes, equacao):
 	a = x_min
 	h = (x_max - x_min) / n_particoes
 	b = a + h
@@ -47,7 +48,7 @@ def gauss_legendre_3(x_min, x_max, n_particoes, equacao):
 	return soma_part
 
 
-def gauss_legendre_4(x_min, x_max, n_particoes, equacao):
+def integral_4(x_min, x_max, n_particoes, equacao):
 	a = x_min
 	h = (x_max - x_min) / n_particoes
 	b = a + h
@@ -75,7 +76,7 @@ def gauss_legendre_4(x_min, x_max, n_particoes, equacao):
 	return soma_part
 
 
-def gauss_legendre(x_min, x_max, tolerancia, grau, equacao):
+def integral(x_min, x_max, equacao, tolerancia=0.000001, grau=2):
 	
 	integral_anterior = 0
 	integral = 0
@@ -89,32 +90,26 @@ def gauss_legendre(x_min, x_max, tolerancia, grau, equacao):
 		integral_anterior = integral
 
 		if grau == 2:
-			integral = gauss_legendre_2(x_min, x_max, n, equacao)
+			integral = integral_2(x_min, x_max, n, equacao)
 		if grau == 3:
-			integral = gauss_legendre_3(x_min, x_max, n, equacao)
+			integral = integral_3(x_min, x_max, n, equacao)
 		if grau == 4:
-			integral = gauss_legendre_4(x_min, x_max, n, equacao)
+			integral = integral_4(x_min, x_max, n, equacao)
 
 		erro = abs((integral - integral_anterior) / integral)
-
 		
 	return integral, contador
-
-
-def calc(equacao, x):
-    ''' Calcula e reorna o valor de uma equacao matematica em determinado ponto (x) '''
-    return eval(equacao)
 
 
 if __name__ == '__main__':
 
 	equacao = '(sin(2*x)+4*x**2+3*x)**2'
 
-	I, cont = gauss_legendre(0, 1, 0.000001, 2, equacao)
+	I, cont = integral(0, 1, equacao, 0.000001, 2)
 	print(f'grau:2, resultado:{I}, quantidade de iteracoes:{cont}')
 
-	I, cont = gauss_legendre(0, 1, 0.000001, 3, equacao)
+	I, cont = integral(0, 1, equacao, 0.000001, 3)
 	print(f'grau:3, resultado:{I}, quantidade de iteracoes:{cont}')
 
-	I, cont = gauss_legendre(0, 1, 0.000001, 4, equacao)
+	I, cont = integral(0, 1, equacao, 0.000001, 4)
 	print(f'grau:4, resultado:{I}, quantidade de iteracoes:{cont}')
